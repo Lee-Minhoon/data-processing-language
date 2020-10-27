@@ -2,9 +2,9 @@
 library(magick)
 
 # Set Variable
-pool_path = "./resource/pool.png"
-pool <- image_read(pool_path)
-pool <- image_scale(pool, "300X400!")
+table_path = "./resource/table.png"
+table <- image_read(table_path)
+table <- image_scale(table, "300X400!")
 
 ball_path = "./resource/ball.png"
 ball <- image_read(ball_path)
@@ -21,7 +21,7 @@ while(TRUE)
   position <- paste("+", x, "+", y, sep = "")
   
   # 당구대이미지에 당구공이미지를 offset위치로 합침
-  img <- image_composite(pool, ball, offset = position)
+  img <- image_composite(table, ball, offset = position)
   
   # 이미지를 출력
   print(img)
