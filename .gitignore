@@ -2,3 +2,4 @@ output/
 resource/
 .RData
 .Rhistory
+.env
