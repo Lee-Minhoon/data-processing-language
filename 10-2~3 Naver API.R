@@ -47,4 +47,3 @@ nouns.df.sort <- nouns.df[order(-nouns.df$Freq), ]
 wordcloud(nouns.df.sort[, 1], freq = nouns.df.sort[, 2],
           min.freq = 1, scale = c(3, 0.7), rot.per = 0.25,
           random.order = F, random.color = T, colors = rainbow(7))
-
