@@ -44,24 +44,3 @@ graph.density(G.ring)
 shortest.paths(G.Y)
 distances(G.Y, v = "A", to = "E")
 average.path.length(G.Y)
-
-# facebook dataset
-filename <- "./resource/facebook_combined.txt"
-df.fb <- read.table(filename, header = F)
-head(df.fb)
-
-G.fb <- graph.data.frame(df.fb, directed = FALSE)
-par(mar = c(0, 0, 0, 0))
-plot(G.fb, vertex.label = NA, vertex.size = 10, vertex.color = rgb(0, 1, 0, 0, 5))
-
-# dev.off()
-V(G.fb)$name
-v.set <- V(G.fb)$name[1:50]
-G.fb.part <- induced_subgraph(G.fb, v = v.set)
-tkplot(G.fb.part, vertex.label.cex = 1.2, vertet.size = degree(G.fb.part) * 1.5,
-       vertex.color = "yellow", vertex.frame.color = "gray")
-
-v2 <- which(V(G.fb)$name == "1")
-v2
-v.set <- neighbors(G.fb, v = v2)
-v.set
