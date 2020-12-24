@@ -5,7 +5,7 @@ library(igraph)
 resource_path = paste(getwd(), "/resource/", sep = "")
 
 # 1, 3. Read Dataset
-df.fb = read.table(paste(resource_path, "ca-GrQc.txt", sep = ""), header = T)
+df.fb = read.table(paste(resource_path, "ca-GrQc.txt", sep = ""), header = F)
 nrow(df.fb)
 head(df.fb)
 
@@ -22,9 +22,9 @@ dmax = d_summary["Max."]
 dmax_node = V(G.fb)$name[d == dmax]
 dmax_which = which(d == dmax)
 
-print(paste("제일 높은 연결강도 : ", dmax, sep = ""))
-print(paste("연결 중심성 관점에서 본 중심 노드 : ", dmax_node, sep = ""))
-print(paste("연결 중심성 관점에서 본 중심 노드 번호 : ", dmax_which, sep = ""))
+print(paste("제일 높은 Degree : ", dmax, sep = ""))
+print(paste("연결정도 중심성 관점에서 본 중심 노드 : ", dmax_node, sep = ""))
+print(paste("연결정도 중심성 관점에서 본 중심 노드 번호 : ", dmax_which, sep = ""))
 
 c = closeness(G.fb)
 ccn = centralization.closeness(G.fb)
@@ -35,7 +35,7 @@ cmin = c_summary["Min."]
 cmin_node = V(G.fb)$name[c == cmin]
 cmin_which = which(c == cmin)
 
-print(paste("제일 낮은 근접 중심성 : ", cmin, sep = ""))
+print(paste("제일 낮은 Closeness : ", cmin, sep = ""))
 print(paste("근접 중심성 관점에서 본 중심 노드 : ", cmin_node, sep = ""))
 print(paste("근접 중심성 관점에서 본 중심 노드 번호 : ", cmin_which, sep = ""))
 
@@ -48,14 +48,14 @@ bmax = b_summary["Max."]
 bmax_node = V(G.fb)$name[b == bmax]
 bmax_which = which(b == bmax)
 
-print(paste("제일 높은 중개 중심성 : ", bmax, sep = ""))
+print(paste("제일 높은 Betweenness : ", bmax, sep = ""))
 print(paste("중개 중심성 관점에서 본 중심 노드 : ", bmax_node, sep = ""))
 print(paste("중개 중심성 관점에서 본 중심 노드 번호 : ", bmax_which, sep = ""))
 
 # 5, 6. Plotting
 d_summary
 degree.distribution(G.fb)
-plot(d, type = 'h', main = "Degree Distribuion", xlab = "index", ylab = "degree")
+plot(d, type = 'h', main = "Degree Distribution", xlab = "index", ylab = "degree")
 
 # 7. Ten Nodes with Large Degree
 dmax_ten_which = order(d, decreasing=TRUE)[1:10]
